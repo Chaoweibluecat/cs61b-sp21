@@ -101,5 +101,12 @@ public class Room {
         return nearestPoint(position).manhattanDistance(position);
     }
 
+    public boolean isCorner(Position position) {
+        return (position.x == xEnd() && position.y == yEnd()) ||
+                (position.x == xStart() && position.y == yEnd()) ||
+                (position.x == xStart() && position.y == yStart()) ||
+                (position.x == xEnd() && position.y == yStart());
+    }
+
 
 }

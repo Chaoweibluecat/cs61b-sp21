@@ -14,6 +14,12 @@ public class World {
     public static int MIN_ROOM_DIS = 3;
     public List<Room> rooms;
     public List<Hallway> hallways;
+
+    List<Position> walls;
+
+    Position lockedDoor;
+    Position player;
+
     int width;
     int height;
 
@@ -129,12 +135,14 @@ public class World {
     }
 
     public void genWalls() {
+        Set<Position> walls = new HashSet<>();
         for (Room room : rooms) {
             Set<Position> edgePositions = room.getEdgePositions();
             for (Position edgePoint : edgePositions) {
                 List<Position> neighbours = edgePoint.getEightNeighbours();
                 for (Position neighbour : neighbours) {
                     if (world[neighbour.x][neighbour.y] == Tileset.NOTHING){
+                        walls.add(neighbour);
                         world[neighbour.x][neighbour.y] = Tileset.WALL;
                     }
                 }
@@ -145,12 +153,14 @@ public class World {
                 List<Position> neighbours = path.getEightNeighbours();
                 for (Position neighbour : neighbours) {
                     if (world[neighbour.x][neighbour.y] == Tileset.NOTHING){
+                        walls.add(neighbour);
                         world[neighbour.x][neighbour.y] = Tileset.WALL;
                     }
                 }
 
             }
         }
+        this.walls = new ArrayList<>(walls);
     }
 
     private void generateHallWays(List<Edge> resultEdges) {
@@ -207,10 +217,71 @@ public class World {
         });
         return res;
     }
-    public void Render() {
+    public void render() {
         ter.renderFrame(world);
     }
 
+    public void genDoor(){
+        int wallIdx = random.nextInt(walls.size());
+        while (!legalWall(walls.get(wallIdx))) {
+            wallIdx = random.nextInt(walls.size());
+        }
+        lockedDoor = walls.get(wallIdx);
+        world[lockedDoor.x][lockedDoor.y] = Tileset.LOCKED_DOOR;
+        for (Position neighbour : lockedDoor.getNeighbours()) {
+            if (world[neighbour.x][neighbour.y] != Tileset.LOCKED_DOOR
+                    && world[neighbour.x][neighbour.y] != Tileset.NOTHING
+                    && world[neighbour.x][neighbour.y] != Tileset.WALL) {
+                player = neighbour;
+                break;
+            }
+        }
+        world[player.x][player.y] = Tileset.AVATAR;
+    }
+
+    private boolean legalWall(Position pos){
+        List<Position> neighbours = pos.getNeighbours();
+        int nothing = 0;
+        int something = 0;
+        int wall = 0;
+        for (Position neighbour : neighbours) {
+            if (world[neighbour.x][neighbour.y] == Tileset.NOTHING){
+                nothing++;
+            } else if (world[neighbour.x][neighbour.y] == Tileset.WALL){
+                wall++;
+            } else {
+                something++;
+            }
+        }
+        return nothing == 1 && wall == 2 && something == 1;
+    }
+
+
+    public void handleInput(String ins) {
+        char c = ins.charAt(0);
+        Position next = player;
+        if (c == 'w' || c == 'W') {
+            next = player.getUp();
+        } else if (c == 's' || c == 'S') {
+            next = player.getDown();
+        } else if (c == 'a' || c == 'A') {
+            next = player.getLeft();
+         }else if (c == 'd' || c == 'D') {
+            next = player.getRight();
+        }
+        if (legalMove(next)) {
+            world[player.x][player.y] = Tileset.GRASS;
+            player = next;
+            world[player.x][player.y] = Tileset.AVATAR;
+            render();
+        }
+    }
+
+    private boolean legalMove(Position position) {
+       return world[position.x][position.y] != Tileset.LOCKED_DOOR
+                && world[position.x][position.y] != Tileset.NOTHING
+                && world[position.x][position.y] != Tileset.WALL;
+    }
 
 
 }

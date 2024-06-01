@@ -25,6 +25,24 @@ public class Position {
         return res;
     }
 
+    public Position getLeft(){
+        return new Position(x-1, y);
+    }
+
+    public Position getUp(){
+        return new Position(x, y+1);
+    }
+
+    public Position getDown(){
+        return new Position(x, y-1);
+    }
+
+
+    public Position getRight(){
+        return new Position(x+1, y);
+    }
+
+
     public List<Position> getEightNeighbours(){
         List<Position> res = new ArrayList<>();
         res.add(new Position(x, y+1));

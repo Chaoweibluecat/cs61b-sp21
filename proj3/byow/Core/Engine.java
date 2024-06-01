@@ -1,5 +1,6 @@
 package byow.Core;
 
+import byow.InputDemo.KeyboardInputSource;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 
@@ -48,5 +49,9 @@ public class Engine {
 
         TETile[][] finalWorldFrame = null;
         return finalWorldFrame;
+    }
+
+    public void interactWithRemoteClient(String arg) {
+
     }
 }
