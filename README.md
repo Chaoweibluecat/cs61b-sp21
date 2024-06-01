@@ -17,7 +17,7 @@ use interact by **keyboard** as default (working on Network by it seems not real
 
 <img width="951" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/b648102f-ee9b-4c90-9e77-c9c7b6d0ee93">
 
-My Algorithm presented as follows
+Algorithm Overview
 
 1.Generate random rooms number between 8-16 As **roomNum**;   Randomly generate Rooms ,abort if illegal,until room numbers reaches **roomNum**;
 
