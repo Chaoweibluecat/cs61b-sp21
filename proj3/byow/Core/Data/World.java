@@ -167,7 +167,7 @@ public class World {
             while (true) {
                 itTime++;
                 if (itTime > 10000000) {
-                    Render();
+                    throw new IllegalStateException("we fucked up");
                 }
                 List<Position> availableMoves = availableMoves(current, visited, targetPoints);
                 final Position tempCur = current;
