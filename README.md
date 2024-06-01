@@ -1,4 +1,4 @@
-my cs61b implementation 
+<img width="1191" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/7438d188-8e93-4be3-9a46-c48d3ce0d505"><img width="1191" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/07603a15-5e06-4e09-b49b-501e14bf4fc8"><img width="1191" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/cf7986dd-d1ad-4e5a-b61a-33c68e3b84f8">my cs61b implementation 
 # Proj2 and other labs
 see cs61b-23fall
 
@@ -13,9 +13,8 @@ welcome page , only supports New Game; Load&Save may come later
 
 use interact by **keyboard** as default (working on Network by it seems not really meaningful)
 
+<img width="1199" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/1019fabc-136e-45c2-968d-9da2626741a3">
 
-
-![Uploading image.png…]()
 
 Algorithm Overview
 
