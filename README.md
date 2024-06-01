@@ -1,4 +1,7 @@
 my cs61b implementation 
+# Proj2 and other labs
+see cs61b-23fall
+
 
 # Proj3
 
