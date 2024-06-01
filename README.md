@@ -15,7 +15,7 @@ use interact by **keyboard** as default (working on Network by it seems not real
 
 
 
-<img width="951" alt="image" src="https://github.com/Chaoweibluecat/cs61b-sp21/assets/55312380/b648102f-ee9b-4c90-9e77-c9c7b6d0ee93">
+![Uploading image.png…]()
 
 Algorithm Overview
 
