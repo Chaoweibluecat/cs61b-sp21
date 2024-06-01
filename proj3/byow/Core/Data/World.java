@@ -42,7 +42,8 @@ public class World {
             }
         }
         roomNum = random.nextInt(6) + 10;
-        int roomSizeFactor = (int) (Math.sqrt(roomNum) * 1.2);
+        // magic , don't ask!
+        int roomSizeFactor = (int) (Math.sqrt(roomNum) * 1.3);
         roomRefWidth = width / roomSizeFactor ;
         roomRefHeight = height / roomSizeFactor ;
     }
@@ -206,13 +207,9 @@ public class World {
         });
         return res;
     }
-
-
-
     public void Render() {
         ter.renderFrame(world);
     }
-
 
 
 
